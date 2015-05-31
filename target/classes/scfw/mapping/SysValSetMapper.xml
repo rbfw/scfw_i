@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scfw.dao.SysValSetMapper" >
+  <resultMap id="BaseResultMap" type="scfw.model.SysValSet" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="val_set_code" property="valSetCode" jdbcType="VARCHAR" />
+    <result column="val" property="val" jdbcType="VARCHAR" />
+    <result column="val_cn" property="valCn" jdbcType="VARCHAR" />
+    <result column="val_en" property="valEn" jdbcType="VARCHAR" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, val_set_code, val, val_cn, val_en, is_deleted, parent_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_val_set
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_val_set
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="scfw.model.SysValSet" >
+    insert into sys_val_set (id, val_set_code, val, 
+      val_cn, val_en, is_deleted, 
+      parent_id)
+    values (#{id,jdbcType=INTEGER}, #{valSetCode,jdbcType=VARCHAR}, #{val,jdbcType=VARCHAR}, 
+      #{valCn,jdbcType=VARCHAR}, #{valEn,jdbcType=VARCHAR}, #{isDeleted,jdbcType=INTEGER}, 
+      #{parentId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="scfw.model.SysValSet" >
+    insert into sys_val_set
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="valSetCode != null" >
+        val_set_code,
+      </if>
+      <if test="val != null" >
+        val,
+      </if>
+      <if test="valCn != null" >
+        val_cn,
+      </if>
+      <if test="valEn != null" >
+        val_en,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="valSetCode != null" >
+        #{valSetCode,jdbcType=VARCHAR},
+      </if>
+      <if test="val != null" >
+        #{val,jdbcType=VARCHAR},
+      </if>
+      <if test="valCn != null" >
+        #{valCn,jdbcType=VARCHAR},
+      </if>
+      <if test="valEn != null" >
+        #{valEn,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scfw.model.SysValSet" >
+    update sys_val_set
+    <set >
+      <if test="valSetCode != null" >
+        val_set_code = #{valSetCode,jdbcType=VARCHAR},
+      </if>
+      <if test="val != null" >
+        val = #{val,jdbcType=VARCHAR},
+      </if>
+      <if test="valCn != null" >
+        val_cn = #{valCn,jdbcType=VARCHAR},
+      </if>
+      <if test="valEn != null" >
+        val_en = #{valEn,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="scfw.model.SysValSet" >
+    update sys_val_set
+    set val_set_code = #{valSetCode,jdbcType=VARCHAR},
+      val = #{val,jdbcType=VARCHAR},
+      val_cn = #{valCn,jdbcType=VARCHAR},
+      val_en = #{valEn,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="queryValSetList" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select
+	<include refid="Base_Column_List" />
+	from sys_val_set t where t.val_set_code = #{valSetCode,jdbcType=VARCHAR} and t.is_deleted = 0 order by t.id
+  </select>
+</mapper>

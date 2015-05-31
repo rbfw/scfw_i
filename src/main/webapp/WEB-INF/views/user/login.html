@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<@c.baseCss />
+<@css.user />
+<title>用户登录</title>
+<@c.baseJs />
+<@js.user />
+</head>
+<body>
+	<div class="loginDiv">
+		<input type="hidden" id="isLoginPage" value="yes" />
+		<#if Session["user"]??>
+		<input type="hidden" id="isLogin" value="yes" />
+		</#if>
+		<form action="${c.basePath}/userController/submitLogin.html" method="post" id="userLogin" name="userLogin">
+		<table class="mytb" width="100%" border="0">
+			<colgroup>
+					<col width="30%">
+					<col width="50%">
+			</colgroup>
+			<thead>
+				<tr>
+					<th colspan="2">用户登录</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td class="tct">用户名</td>
+				<td><input type="text" class="ipt" maxlength="20" name="userName" /></td>
+			</tr>
+			<tr>
+				<td class="tct">密&nbsp;&nbsp;码</td>
+				<td><input type="password" class="ipt" maxlength="20" name="userPwd" /></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="tct"><input type="button" class="loginBtn" value="登录" /></td>
+			</tr>
+			</tbody>
+		</table>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<#macro baseCss>
+<link href="${request.contextPath}/css/base.css" rel="stylesheet" type="text/css" />
+</#macro>
+ 
+<#macro out str>
+	params:${str}
+</#macro> 
+
+<#macro baseJs> 
+<!-- <script src="/webdocs/js/seajs/2.1.1/app.js"></script> -->
+<script type="text/javascript" src="${request.contextPath}/js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="${request.contextPath}/js/jquery.form.js"></script>
+<script type="text/javascript" src="${request.contextPath}/js/comm.js"></script>
+</#macro>
+
+<#assign basePath=request.contextPath>
+
+<#macro alert>
+	<div class="disableDiv">
+		<div class="alert">
+			<div class="alert_t"><span class="alertTitle">温馨提示</span><span class="alertClose">×</span></div>
+			<div class="alert_c">操作成功！</div>
+			<div class="alert_b">
+				<input type="button" class="yesBtn" value="确定" />
+				<input type="button" class="noBtn" value="取消" />
+			</div>
+		</div>
+	</div>
+</#macro>
+<#macro xxx>
+	<div class="disableDiv">
+		<div class="confirm">
+			<div class="alert_t"><span class="alertTitle">温馨提示</span><span class="alertClose">×</span></div>
+			<div class="alert_c">是否继续操作？</div>
+			<div class="alert_b">
+				<input type="button" class="yesBtn" value="确定" />
+				<input type="button" class="noBtn" value="取消" />
+			</div>
+		</div>
+	</div>
+</#macro>

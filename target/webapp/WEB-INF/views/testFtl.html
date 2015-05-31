@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test flt</title>
+<@c.css />
+<style type="text/css">
+.foodList{
+	width: 95%;
+	//border: 1px solid #37aaea;
+	margin: 10px auto;
+	min-width: 600px;
+}
+</style>
+<@c.javascript />
+<script type="text/javascript">
+	$(function(){
+		
+	});
+</script>
+</head>
+<body>
+	<div class="main">
+		<@menu.menu />
+		<div class="foodList">
+			<table class="mytb" width="100%" >
+				<thead>
+					<tr>
+						<th>选择</th>
+						<th>菜名</th>
+						<th>人气</th>
+						<th>单价</th>
+						<th>创建时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				<#list 1..10 as t>
+				<tr>
+				<td class="tct"></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="tct">
+					<!-- <input type="button" value="修改" /> -->
+					<a href="###" uid="" class="viewBtn">点你</a>
+					<!-- <input type="button" value="删除" /> -->
+				</td>
+				</tr>
+				</#list>
+				<tr>
+					<td colspan="6" class="tct">
+					<input type="button" class="addBtn" value="点餐" />
+					<input type="button" class="flushBtn" value="刷新" />
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

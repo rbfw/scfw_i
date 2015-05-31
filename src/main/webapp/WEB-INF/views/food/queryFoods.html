@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>菜单列表</title>
+<@c.baseCss />
+<@c.baseJs />
+<@c.alert />
+<@css.food />
+<@js.food />
+<script type="text/javascript">
+</script>
+</head>
+<body>
+	<div class="main">
+		<@menu.menu />
+		<div class="foodList">
+			<form action="submitFoods.html" method="get" id="foodForms">
+			<table class="mytb" width="100%" >
+				<colgroup>
+					<col width="5%">
+					<col width="20%">
+					<col width="20%">
+					<col width="5%">
+					<col width="30%">
+					<col width="20%">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>选择</th>
+						<th>菜名</th>
+						<th>人气值</th>
+						<th>单价</th>
+						<th>创建时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				<#list foods as food>
+				<tr class="trContent">
+				<td class="tct">
+					<input type="checkbox" name="foodIds" value="${food.id}" />
+				</td>
+				<td><span class="sign_yelo">${food.foodName}</span></td>
+				<td>
+					<#list 0..food.totalCount as ct>
+					<span class="sign_yelo">★</span>
+					</#list>
+				</td>
+				<td class="tct"><span class="sign">￥<b>${food.foodPrice}</b></span></td>
+				<td>${food.createDate?string('yyyy-MM-dd HH:mm:ss')}</td>
+				<td class="tct">
+					<!-- <input type="button" value="修改" /> -->
+					<a href="###" fid="${food.id}" class="DNBtn">点你</a>
+					<!-- <input type="button" value="删除" /> -->
+				</td>
+				</tr>
+				</#list>
+				<tr>
+					<td colspan="6" class="tct">
+					<input type="button" class="submitBtn" value="批量点餐" />
+					<input type="button" class="alertBtn" value="弹出" />
+					<input type="button" class="confirmBtn" value="确认" />
+					<input type="button" class="flushBtn" value="刷新" />
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

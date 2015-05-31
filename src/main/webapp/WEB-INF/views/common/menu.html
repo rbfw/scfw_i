@@ -1,0 +1,18 @@
+<#macro menu>
+<div class="top_menu">
+	<ul>
+		<li><a href="###" class="index"><span>&nbsp;&nbsp;首页&nbsp;&nbsp;</span></a></li>
+		<li><a href="###" class="todayOrderItems"><span>今日已点</span></a></li>
+		<li><a href="###"><span>历史记录</span></a></li>
+		<li><a href="###"><span>用户信息</span></a></li>
+		<#if Session["user"]??>
+		<li style="float: right;">
+		<span class="menuInfo">当前用户：${Session["user"].nickName}</span>&nbsp;
+		<span class="menuInfo">可用余额：￥${Session["user"].myBanlance}</span>&nbsp;
+		<span class="menuInfo exitLogin">退出</span>&nbsp;&nbsp;
+		</li>
+		<input type="hidden" id="userId" value="${Session['user'].id}" />
+		</#if>
+	</ul>
+</div>
+</#macro>

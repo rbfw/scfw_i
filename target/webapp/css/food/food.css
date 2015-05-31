@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+.foodList{
+	width: 95%;
+	margin: 10px auto;
+	min-width: 600px;
+	display: none;
+}

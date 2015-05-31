@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scfw.dao.SysUserMapper" >
+  <resultMap id="BaseResultMap" type="scfw.model.SysUser" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="is_disable" property="isDisable" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
+    <result column="pwd_type" property="pwdType" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="true_name" property="trueName" jdbcType="VARCHAR" />
+    <result column="my_banlance" property="myBanlance" jdbcType="DOUBLE" />
+    <result column="power" property="power" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="favorite_ball" property="favoriteBall" jdbcType="INTEGER" />
+    <result column="work_area" property="workarea" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, is_disable, user_name, user_pwd, pwd_type, nick_name, true_name, my_banlance, 
+    power, create_date, update_date, sex, favorite_ball, work_area
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_user
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="scfw.model.SysUser" useGeneratedKeys="true" keyProperty="id" >
+    insert into sys_user (ID, is_disable, user_name, 
+      user_pwd, pwd_type, nick_name, 
+      true_name, my_banlance, power, 
+      create_date, update_date, sex, 
+      favorite_ball, work_area)
+    values (#{id,jdbcType=INTEGER}, #{isDisable,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{userPwd,jdbcType=VARCHAR}, #{pwdType,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{trueName,jdbcType=VARCHAR}, #{myBanlance,jdbcType=DOUBLE}, #{power,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, #{sex,jdbcType=INTEGER}, 
+      #{favoriteBall,jdbcType=INTEGER}, #{workarea,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="scfw.model.SysUser" >
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="isDisable != null" >
+        is_disable,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userPwd != null" >
+        user_pwd,
+      </if>
+      <if test="pwdType != null" >
+        pwd_type,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="trueName != null" >
+        true_name,
+      </if>
+      <if test="myBanlance != null" >
+        my_banlance,
+      </if>
+      <if test="power != null" >
+        power,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="favoriteBall != null" >
+        favorite_ball,
+      </if>
+      <if test="workarea != null" >
+        work_area,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDisable != null" >
+        #{isDisable,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdType != null" >
+        #{pwdType,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null" >
+        #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="myBanlance != null" >
+        #{myBanlance,jdbcType=DOUBLE},
+      </if>
+      <if test="power != null" >
+        #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="favoriteBall != null" >
+        #{favorite_ball,jdbcType=INTEGER},
+      </if>
+      <if test="workarea != null" >
+        #{work_area,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scfw.model.SysUser" >
+    update sys_user
+    <set >
+      <if test="isDisable != null" >
+        is_disable = #{isDisable,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        user_pwd = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdType != null" >
+        pwd_type = #{pwdType,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null" >
+        true_name = #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="myBanlance != null" >
+        my_banlance = #{myBanlance,jdbcType=DOUBLE},
+      </if>
+      <if test="power != null" >
+        power = #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="favoriteBall != null" >
+        favorite_ball = #{favoriteBall,jdbcType=INTEGER},
+      </if>
+      <if test="workarea != null" >
+        work_area = #{workarea,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="scfw.model.SysUser" >
+    update sys_user
+    set is_disable = #{isDisable,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_pwd = #{userPwd,jdbcType=VARCHAR},
+      pwd_type = #{pwdType,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      true_name = #{trueName,jdbcType=VARCHAR},
+      my_banlance = #{myBanlance,jdbcType=DOUBLE},
+      power = #{power,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      sex = #{sex,jdbcType=INTEGER},
+      favorite_ball = #{favoriteBall,jdbcType=INTEGER},
+      work_area = #{workarea,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="querySysUser" resultMap="BaseResultMap">
+  	select 
+	<include refid="Base_Column_List" /> 
+	from sys_user
+  </select>
+</mapper>
